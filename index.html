@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Key-Takeaway</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="js/script.js"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="style.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Swiper CDN-->
+    <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />    
+    <!-- Bootstrap core JS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module"  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+  </head>
+  <body>   
+        <div id="root"></div>
+
+         <!-- Navigation-->
+         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+         <nav id="sidebar-wrapper">
+             <ul class="sidebar-nav">
+                 <li class="sidebar-nav-item"><a href="#">About</a></li>
+                 <li class="sidebar-nav-item"><a href="#finance" onclick="displayFinance()">Finance Books</a></li>
+                 <li class="sidebar-nav-item"><a href="#stockmarket" onclick="displayStocks()">Stock Market Books</a></li>
+                 <li class="sidebar-nav-item"><a href="#motivation" onclick="displayMotivation()">Motivational Books</a></li>
+                 <li class="sidebar-nav-item"><a href="#biography" onclick="displayBiography()">Biographies </a></li>
+                 <li class="sidebar-nav-item"><a href="#lifelesson" onclick="displayLifelesson()">Life Lesson Books</a></li>
+                 <li class="sidebar-nav-item"><a href="#novels" onclick="displayNovels()">Novels</a></li>
+                 <li class="sidebar-nav-item"><a href="#">Contact</a></li>
+             </ul>
+         </nav>
+         <!-- Header-->
+         <header class="masthead d-flex align-items-top">
+             <div class="container text-left">
+                 <h1 id="topleft">Key-Takeaways</h1>
+             </div>
+             <div  id="input">
+                <div class="container">                   
+                    <div class="input-group d-flex justify-content-center">
+                        <input class="form-control " id="bname" placeholder="Enter Book Name Here.... " onfocus="this.value=''" autofocus required>
+                        <button id="myBtn" onclick="callChatGPT()" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+         </header>
+
+         <!------------------------- Loader------------------------->
+                <div id="loading" ></div>
+                <div class="searchsection" ><div id="result" style="display: none;"></div></div>
+          <!------------------------ Result-------------------------->
+          
+
+            <section class="content-section" >            
+                <div class="searchsection">
+                    
+                        <span id="search">
+                            <h1 style="font-size: 3rem;">What are you waiting for...</h1>
+                            <h1 style="font-size: 2rem;">          Restrictions are over...</h1>
+                            <h1 style="font-size: 3rem; color: saddlebrown;">Now you can find Key-Takeaway points for almost any book published...</h1><br>
+                            <div class="row">
+                               <div class="col-lg-5"> <img id="svgimage" src="/images/book.svg" alt="Book"> </div>
+                               <div class="col-lg-7">
+                                <h1 style="font-size: 3rem;">Start searching your favourite book now...</h1> 
+                                <a href="#finance" onclick="displayFinance()"><h3>10 Must Read Finance Books</h3></a>
+                                <a href="#stockmarket" onclick="displayStocks()"><h3>10 Must Read Stock Market Books</h3></a> 
+                                <a href="#motivation" onclick="displayMotivation()"><h3>10 Must Read Motivational Books</h3></a> 
+                                <a href="#biography" onclick="displayBiography()"><h3>10 Must Read Biographies</h3> </a>
+                                <a href="#lifelesson" onclick="displayLifelesson()"><h3>10 Must Read Life Lesson Books</h3> </a>
+                                <a href="#novels" onclick="displayNovels()"><h3>10 Must Read Novels</h3> </a>
+                               </div>                           
+                            </div>                                
+                        </span>
+                                        
+                </div>
+            </section>   
+
+         <!---Carousel-->   
+         <section class="content-section" id="carousel">
+            <h1>Most Viewed</h1>            
+            <div class="c-carousel-showcase__carousel">
+              <div class="c-3d-carousel">
+                <div class="c-3d-carousel__inner">
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-before c-3d-carousel__item-before--4" data-slide="1">
+                    <a id="noveltopic11" onclick="displaymostviewed(this.id)"><img src="/images/img_15.jpg" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-before c-3d-carousel__item-before--3" data-slide="2">
+                    <a id="financetopic8" onclick="displaymostviewed(this.id)"><img src="/images/Finance_8.jpg" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-before c-3d-carousel__item-before--2" data-slide="3">
+                    <a id="lifelessontopic1" onclick="displaymostviewed(this.id)"><img src="/images/img_1.jpg" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-before c-3d-carousel__item-before--1" data-slide="4">
+                    <a id="financetopic7" onclick="displaymostviewed(this.id)"><img src="/images/Finance_7.jpg" alt=""></a>
+                  </figure>            
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-active" data-slide="5">
+                    <a id="noveltopic12" onclick="displaymostviewed(this.id)"><img src="/images/img_3.jpg" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item  c-3d-carousel__item-after c-3d-carousel__item-after--1" data-slide="6">
+                    <a id="noveltopic13" onclick="displaymostviewed(this.id)"><img src="/images/img_4.jpg" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-after c-3d-carousel__item-after--2" data-slide="7">
+                    <a id="biographytopic1" onclick="displaymostviewed(this.id)"><img src="/images/img_5.jpg" alt=""></a>
+                  </figure>  
+                  <figure class="c-3d-carousel__item  c-3d-carousel__item-after c-3d-carousel__item-after--3" data-slide="8">
+                    <a id="noveltopic1" onclick="displaymostviewed(this.id)"><img src="/images/img_6.webp" alt=""></a>
+                  </figure>
+                  <figure class="c-3d-carousel__item c-3d-carousel__item-after c-3d-carousel__item-after--4" data-slide="9">
+                    <a id="stockstopic7" onclick="displaymostviewed(this.id)"><img src="/images/Stocks_7.webp" alt=""></a>
+                  </figure>                              
+                </div>                           
+              </div>
+            </div>  
+            <div class="slider-control">
+                <button class="c-btn c-btn--dark prev">Prev</button>
+                <button class="c-btn c-btn--dark next">Next</button>
+            </div>
+         </section>
+
+         <!----------------- Most viewed display------------------->
+         <div class="searchsection" >
+            <div id="mostviewed" style="display: none;">
+             
+            </div>
+        </div>
+
+         <!-- Categories-->
+         <section class="content-section" id="portfolio">
+            <div class="container px-2 px-lg-4">
+                <div class="content-section-heading text-center">
+                    <h2 class="mb-2">Categories</h2>
+                </div>
+                <div class="row gx-0">
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayFinance()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Finance</div>
+                                    <p class="mb-0">10 must read finance books of all time.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" id="image" src="images/Finance.jpg" alt="Finance" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayStocks()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Stock Market</div>
+                                    <p class="mb-0">10 best books to read before investing in stock market.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid " id="image" src="images/Stocks.jpg" alt="Stock Market" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayMotivation()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Motivation</div>
+                                    <p class="mb-0">The best 10 books for younger generation to get motivated.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid " id="image" src="images/Motivation.jpg" alt="Motivations" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayBiography()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Biography</div>
+                                    <p class="mb-0">The 10 best biographies ever written</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid " id="image" src="images/Biography.jpg" alt="Biographies" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayLifelesson()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Life Lessons</div>
+                                    <p class="mb-0">10 must read books to learn valuable life lessons.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" id="image" src="images/Life_lessons.jpg" alt="Life Lessons" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" onclick="displayNovels()">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Stories</div>
+                                    <p class="mb-0">The best 10 novels in the history of mankind.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" id="image" src="images/Novels.jpg" alt="Stories" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- -------------------Display Categories------------>
+        <div id = "focuselement">
+        <section class="content-category">
+            <div id="finance" style="display: none; ">         
+                <div class="displayparagraph">
+                    <h2>1. Think and Grow Rich</h2>                      
+                    <img class="float-start " src="/images/Finance_1.jpg" alt="Think and Grow Rich">
+                    <div class="paragraph" id="finance1" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>2. Secrets of the Millionaire Mind</h2>                      
+                    <img class="float-start" src="/images/Finance_2.jpg" alt="Secrets of the Millionaire Mind">
+                    <div class="paragraph" id="finance2" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>3. The Psychology of Money</h2>                      
+                    <img class="float-start" src="/images/Finance_3.jpg" alt="The Psychology of Money">
+                    <div class="paragraph" id="finance3" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>4. The Total Money Makeover</h2>                      
+                    <img class="float-start" src="/images/Finance_4.webp" alt="The Total Money Makeover">
+                    <div class="paragraph" id="finance4" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>5. The Millionaire Next Door</h2>                      
+                    <img class="float-start" src="/images/Finance_5.jpg" alt="The Millionaire Next Door">
+                    <div class="paragraph" id="finance5" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>6. Your Money or Your Life</h2>                      
+                    <img class="float-start" src="/images/Finance_6.png" alt="Your Money or Your Life">
+                    <div class="paragraph" id="finance6" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>7. Rich Dad Poor Dad</h2>                      
+                    <img class="float-start" src="/images/Finance_7.jpg" alt="Rich Dad Poor Dad">
+                    <div class="paragraph" id="finance7" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>8. The Richest Man in Babylon</h2>                      
+                    <img class="float-start" src="/images/Finance_8.jpg" alt="The Richest Man in Babylon">
+                    <div class="paragraph" id="finance8" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>9. I Will Teach You to Be Rich</h2>                      
+                    <img class="float-start" src="/images/Finance_9.jpg" alt="I Will Teach You to Be Rich">
+                    <div class="paragraph" id="finance9" ></div>
+                </div>                     
+                <div class="displayparagraph">
+                    <h2>10. The Automatic Millionaire</h2>                      
+                    <img class="float-start" src="/images/Finance_10.png" alt="The Automatic Millionaire">
+                    <div class="paragraph" id="finance10" ></div>
+                </div>                     
+            </div>  
+
+            <div id="stockmarket" style="display: none; ">    
+                <div class="displayparagraph">
+                    <h2>1. One Up On Wall Street</h2>                      
+                    <img class="float-start" src="/images/Stocks_1.jpg" alt="One Up On Wall Street">
+                    <div class="paragraph" id="stocks1" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>2. The Warren Buffett Way</h2>                      
+                    <img class="float-start" src="/images/Stocks_2.jpg" alt="The Warren Buffett Way">
+                    <div class="paragraph" id="stocks2" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>3. Stocks for the Long Run</h2>                      
+                    <img class="float-start" src="/images/Stocks_3.jpg" alt="Stocks for the Long Run">
+                    <div class="paragraph" id="stocks3" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>4. A Random Walk Down Wall Street</h2>                      
+                    <img class="float-start" src="/images/Stocks_4.jpg" alt="A Random Walk Down Wall Street">
+                    <div class="paragraph" id="stocks4" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>5. Common Stocks and Uncommon Profits</h2>                      
+                    <img class="float-start" src="/images/Stocks_5.jpg" alt="Common Stocks and Uncommon Profits">
+                    <div class="paragraph" id="stocks5" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>6. The Intelligent Investor</h2>                      
+                    <img class="float-start" src="/images/Stocks_6.jpg" alt="The Intelligent Investor">
+                    <div class="paragraph" id="stocks6" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>7. The Dhandho Investor</h2>                      
+                    <img class="float-start" src="/images/Stocks_7.webp" alt="The Dhandho Investor">
+                    <div class="paragraph" id="stocks7" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>8. The Little Book of Common Sense Investing</h2>                      
+                    <img class="float-start" src="/images/Stocks_8.png" alt="The Little Book of Common Sense Investing">
+                    <div class="paragraph" id="stocks8" ></div>
+                </div> 
+                <div class="displayparagraph">
+                    <h2>9. The Little Book That Beats the Market</h2>                      
+                    <img class="float-start" src="/images/Stocks_9.jpg" alt="The Little Book That Beats the Market">
+                    <div class="paragraph" id="stocks9" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>10. The Millionaire Fastlane</h2>                      
+                    <img class="float-start" src="/images/Stocks_10.jpg" alt="The Millionaire Fastlane">
+                    <div class="paragraph" id="stocks10" ></div>
+                </div>                   
+            </div>   
+            
+            <div id="motivation" style="display: none; ">    
+                <div class="displayparagraph">
+                    <h2>1. Think and Grow Rich</h2>                      
+                    <img class="float-start" src="/images/Motivation_1.jpg" alt="Think and Grow Rich">
+                    <div class="paragraph" id="motivation1" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>2. The 7 Habits of Highly Effective People</h2>                      
+                    <img class="float-start" src="/images/Motivation_2.jpg" alt="The 7 Habits of Highly Effective People">
+                    <div class="paragraph" id="motivation2" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>3. You Are a Badass</h2>                      
+                    <img class="float-start" src="/images/Motivation_3.webp" alt="You Are a Badass">
+                    <div class="paragraph" id="motivation3" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>4. The Alchemist</h2>                      
+                    <img class="float-start" src="/images/Motivation_4.webp" alt="The Alchemist">
+                    <div class="paragraph" id="motivation4" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>5. Make Your Bed</h2>                      
+                    <img class="float-start" src="/images/Motivation_5.jpg" alt="Make Your Bed">
+                    <div class="paragraph" id="motivation5" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>6. Man's Search for Meaning</h2>                      
+                    <img class="float-start" src="/images/Motivation_6.webp" alt="Man's Search for Meaning">
+                    <div class="paragraph" id="motivation6" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>7. The Subtle Art of Not Giving a F*ck</h2>                      
+                    <img class="float-start" src="/images/Motivation_7.webp" alt="The Subtle Art of Not Giving a F*ck">
+                    <div class="paragraph" id="motivation7" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>8. Awaken the Giant Within</h2>                      
+                    <img class="float-start" src="/images/Motivation_8.jpg" alt="Awaken the Giant Within">
+                    <div class="paragraph" id="motivation8" ></div>
+                </div> 
+                <div class="displayparagraph">
+                    <h2>9. How to Win Friends and Influence People</h2>                      
+                    <img class="float-start" src="/images/Motivation_9.webp" alt="How to Win Friends and Influence People">
+                    <div class="paragraph" id="motivation9" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>10. The Power of Positive Thinking</h2>                      
+                    <img class="float-start" src="/images/Motivation_10.webp" alt="The Power of Positive Thinking">
+                    <div class="paragraph" id="motivation10" ></div>
+                </div>                   
+            </div> 
+
+            <div id="biography" style="display: none; ">    
+                <div class="displayparagraph">
+                    <h2>1. Steve Jobs</h2>                      
+                    <img class="float-start" src="/images/Biography_1.webp" alt="Steve Jobs">
+                    <div class="paragraph" id="biography1" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>2. MAO: The Unknown Story</h2>                      
+                    <img class="float-start" src="/images/Biography_2.jpg" alt="MAO: The Unknown Story">
+                    <div class="paragraph" id="biography2" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>3. The Diary of a Young Girl</h2>                      
+                    <img class="float-start" src="/images/Biography_3.webp" alt="The Diary of a Young Girl">
+                    <div class="paragraph" id="biography3" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>4. Gandhi Before India</h2>                      
+                    <img class="float-start" src="/images/Biography_4.webp" alt="Gandhi Before India">
+                    <div class="paragraph" id="biography4" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>5. Genghis Khan and the Making of the Modern World</h2>                      
+                    <img class="float-start" src="/images/Biography_5.jpg" alt="Genghis Khan and the Making of the Modern World">
+                    <div class="paragraph" id="biography5" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>6. Into the Wild</h2>                      
+                    <img class="float-start" src="/images/Biography_6.jpg" alt="Into the Wild">
+                    <div class="paragraph" id="biography6" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>7. The Man Who Knew Infinity</h2>                      
+                    <img class="float-start" src="/images/Biography_7.webp" alt="The Man Who Knew Infinity">
+                    <div class="paragraph" id="biography7" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>8. The Snowball: Warren Buffett and the Business of Life</h2>                      
+                    <img class="float-start" src="/images/Biography_8.jpg" alt="The Snowball: Warren Buffett and the Business of Life">
+                    <div class="paragraph" id="biography8" ></div>
+                </div> 
+                <div class="displayparagraph">
+                    <h2>9. Beyond the Last Blue Mountain: A Life of J.R.D. Tata</h2>                      
+                    <img class="float-start" src="/images/Biography_9.webp" alt="Beyond the Last Blue Mountain: A Life of J.R.D. Tata">
+                    <div class="paragraph" id="biography9" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>10. Wings of Fire</h2>                      
+                    <img class="float-start" src="/images/Biography_10.webp" alt="Wings of Fire">
+                    <div class="paragraph" id="biography10" ></div>
+                </div>                   
+            </div> 
+
+            <div id="lifelesson" style="display: none; ">    
+                <div class="displayparagraph">
+                    <h2>1. The Secret</h2>                      
+                    <img class="float-start" src="/images/Life_1.jpg" alt="The Secret">
+                    <div class="paragraph" id="lifelesson1" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>2. Atomic Habits</h2>                      
+                    <img class="float-start" src="/images/Life_2.jpg" alt="Atomic Habits">
+                    <div class="paragraph" id="lifelesson2" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>3. Eat That Frog</h2>                      
+                    <img class="float-start" src="/images/Life_3.jpg" alt="Eat That Frog">
+                    <div class="paragraph" id="lifelesson3" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>4. The Miracle Morning</h2>                      
+                    <img class="float-start" src="/images/Life_4.jpg" alt="The Miracle Morning">
+                    <div class="paragraph" id="lifelesson4" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>5. The 1% Solution</h2>                      
+                    <img class="float-start" src="/images/Life_5.jpg" alt="The 1% Solution">
+                    <div class="paragraph" id="lifelesson5" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>6. Start with Why</h2>                      
+                    <img class="float-start" src="/images/Life_6.webp" alt="Start with Why">
+                    <div class="paragraph" id="lifelesson6" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>7. Life Without Limits</h2>                      
+                    <img class="float-start" src="/images/Life_7.jpg" alt="Life Without Limits">
+                    <div class="paragraph" id="lifelesson7" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>8. Who Moved My Cheese?</h2>                      
+                    <img class="float-start" src="/images/Life_8.jpg" alt="Who Moved My Cheese?">
+                    <div class="paragraph" id="lifelesson8" ></div>
+                </div> 
+                <div class="displayparagraph">
+                    <h2>9. Mindset</h2>                      
+                    <img class="float-start" src="/images/Life_9.webp" alt="Mindset">
+                    <div class="paragraph" id="lifelesson9" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>10. Man's Search for Meaning</h2>                      
+                    <img class="float-start" src="/images/Life_10.webp" alt="Man's Search for Meaning">
+                    <div class="paragraph" id="lifelesson10" ></div>
+                </div>                   
+            </div> 
+
+            <div id="novels" style="display: none; ">    
+                <div class="displayparagraph">
+                    <h2>1. To Kill a Mockingbird</h2>                      
+                    <img class="float-start" src="/images/Novel_1.webp" alt="To Kill a Mockingbird">
+                    <div class="paragraph" id="novel1" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>2. The Great Gatsby</h2>                      
+                    <img class="float-start" src="/images/Novel_2.jpg" alt="The Great Gatsby">
+                    <div class="paragraph" id="novel2" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>3. Anna Karenina</h2>                      
+                    <img class="float-start" src="/images/Novel_3.jpg" alt="Anna Karenina">
+                    <div class="paragraph" id="novel3" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>4. The Catcher in the Rye</h2>                      
+                    <img class="float-start" src="/images/Novel_4.png" alt="The Catcher in the Rye">
+                    <div class="paragraph" id="novel4" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>5. The Color Purple</h2>                      
+                    <img class="float-start" src="/images/Novel_5.jpg" alt="The Color Purple">
+                    <div class="paragraph" id="novel5" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>6. Beloved</h2>                      
+                    <img class="float-start" src="/images/Novel_6.png" alt="Beloved">
+                    <div class="paragraph" id="novel6" ></div>
+                </div>   
+                <div class="displayparagraph">
+                    <h2>7. Things Fall Apart</h2>                      
+                    <img class="float-start" src="/images/Novel_7.png" alt="Things Fall Apart">
+                    <div class="paragraph" id="novel7" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>8. Invisible Man</h2>                      
+                    <img class="float-start" src="/images/Novel_8.jpg" alt="Invisible Man">
+                    <div class="paragraph" id="novel8" ></div>
+                </div> 
+                <div class="displayparagraph">
+                    <h2>9. War and Peace</h2>                      
+                    <img class="float-start" src="/images/Novel_9.jpg" alt="War and Peace">
+                    <div class="paragraph" id="novel9" ></div>
+                </div>     
+                <div class="displayparagraph">
+                    <h2>10. Great Expectations</h2>                      
+                    <img class="float-start" src="/images/Novel_10.png" alt="Great Expectations">
+                    <div class="paragraph" id="novel10" ></div>
+                </div>                   
+            </div> 
+        </section>
+        </div>
+
+         <!-- Footer-->
+         <footer class="footer text-center">
+             <div class="container px-4 px-lg-5">
+                 <ul class="list-inline mb-5">
+                     <li class="list-inline-item">
+                         <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                     </li>
+                     <li class="list-inline-item">
+                         <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                     </li>
+                     <li class="list-inline-item">
+                         <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                     </li>
+                 </ul>
+                 <p class="text-muted small mb-0">Copyright &copy; Key-Takeaways 2023</p>
+             </div>
+         </footer>
+         <!-- Scroll to Top Button-->
+         <a class="scroll-to-top rounded" onclick="scrollToTop()"><i class="fas fa-angle-up"></i></a>
+
+    
+  </body>
+</html>
